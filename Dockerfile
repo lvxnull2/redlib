@@ -1,4 +1,4 @@
-FROM rust:1.78.0-alpine3.19 AS builder
+FROM rust:1.82.0-alpine3.20 AS builder
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY . .
 
 RUN cargo build --release
 
-FROM alpine:3.19
+FROM alpine:3.20
 
 RUN adduser --home /nonexistent --no-create-home --disabled-password redlib
 USER redlib
