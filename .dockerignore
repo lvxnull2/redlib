@@ -1,0 +1,6 @@
+Dockerfile
+*.md
+*.sh
+*.nix
+*.yaml
+*.yml
