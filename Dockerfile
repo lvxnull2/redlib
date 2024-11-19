@@ -2,16 +2,19 @@ FROM rust:1.82.0-alpine3.20 AS builder
 
 WORKDIR /app
 
-RUN apk add --no-cache musl-dev
+RUN apk add --no-cache musl-dev openssl-dev
 
 COPY . .
 
 ARG GIT_HASH=dev
+ENV OPENSSL_DIR=/usr RUSTFLAGS=-Ctarget-feature=-crt-static
 RUN cargo build --release --bin redlib
 
 FROM alpine:3.20
 
-RUN adduser --home /nonexistent --no-create-home --disabled-password redlib
+RUN apk add --no-cache libgcc \
+    && adduser --home /nonexistent --no-create-home --disabled-password redlib
+
 USER redlib
 
 # Tell Docker to expose port 8080
