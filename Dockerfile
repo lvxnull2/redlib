@@ -6,7 +6,8 @@ RUN apk add --no-cache musl-dev
 
 COPY . .
 
-RUN cargo build --release
+ARG GIT_HASH=dev
+RUN cargo build --release --bin redlib
 
 FROM alpine:3.20
 
