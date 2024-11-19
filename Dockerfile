@@ -2,7 +2,7 @@ FROM rust:1.82.0-alpine3.20 AS builder
 
 WORKDIR /app
 
-RUN apk add --no-cache musl-dev
+RUN apk add --no-cache musl-dev openssl-dev openssl-libs-static
 
 COPY . .
 
