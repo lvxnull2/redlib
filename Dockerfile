@@ -9,7 +9,7 @@ COPY . .
 ARG GIT_HASH=dev
 ENV OPENSSL_DIR=/usr RUSTFLAGS=-Ctarget-feature=-crt-static
 
-RUN cargo build --release
+RUN cargo build --release --bin redlib
 
 FROM alpine:3.20
 
