@@ -17,6 +17,4 @@ if [ -r .env ]; then
   set +a
 fi
 
-full_tag="${REGISTRY}/redlib:${1:-latest}"
-$docker build -t "${full_tag}" .
-$docker push "${full_tag}"
+$docker build -t "${REGISTRY}/redlib:${1:-latest}" .
